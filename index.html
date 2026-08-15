@@ -1183,6 +1183,12 @@
   }
 
 
+  // Force page to start at top on load (fixes iOS Safari scroll restoration)
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+
   // Pipeline scroll hint animation
   (function() {
     function hintScroll(row) {
