@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rufina Sakavova — Digital Fashion Designer</title>
+<title>Rufina Sakavova -Digital Fashion Designer</title>
 <style>
   @font-face {
     font-family: 'Comico';
@@ -54,7 +54,7 @@
     backdrop-filter: none;
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: flex-start;
-    padding: 0 56px; height: 60px;
+    padding: 0 80px; height: 60px;
   }
   .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
   .nav-links { display: flex; gap: 32px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
@@ -138,10 +138,11 @@
     margin-bottom: 56px;
   }
   .pipe-step {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 120px;
+    background: transparent; border: none;
+    border-radius: 0; padding: 14px 20px; text-align: center; min-width: 120px;
   }
-  .pipe-step .tool-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .pipe-step-icon { width: 28px; height: 28px; object-fit: contain; margin: 0 auto 6px; display: block; }
+  .pipe-step .tool-name { font-family: 'Comico', serif; font-size: 13px; font-weight: 400; color: var(--text); }
   .pipe-step .tool-role { font-size: 11px; color: var(--muted); margin-top: 3px; }
   .pipe-arrow { color: var(--accent); font-size: 18px; padding: 0 8px; }
   .tools-grid {
@@ -150,16 +151,25 @@
   .tool-card {
     background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px;
   }
-  .tool-card-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .tool-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .tool-card-icon {
+    width: 28px; height: 28px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tool-card-icon img { width: 24px; height: 24px; object-fit: contain; }
+  .tool-card-icon-letter {
+    width: 26px; height: 26px; border-radius: 6px;
+    background: rgba(210,170,60,0.12); border: 1px solid rgba(210,170,60,0.25);
+    color: var(--accent); font-size: 9px; font-weight: 700; letter-spacing: 0.03em;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tool-card-name { font-family: 'Comico', serif; font-size: 14px; font-weight: 400; color: var(--text); margin-bottom: 0; }
   .tool-card-purpose { font-size: 13px; color: var(--muted); line-height: 1.5; }
   .tool-card-badge {
-    display: inline-block; margin-top: 8px;
-    background: rgba(210,170,60,0.1); border: 1px solid rgba(210,170,60,0.25);
-    color: var(--accent); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600;
+    display: block; margin-top: 4px; margin-bottom: 8px;
+    color: var(--accent); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   }
-  .tool-card-badge.cyan {
-    background: rgba(210,170,60,0.07); border-color: rgba(210,170,60,0.2); color: var(--accent2);
-  }
+  .tool-card-badge.cyan { color: var(--accent); }
 
   /* ── 3. NINJA PIPELINE ── */
   #ninja { }
@@ -178,7 +188,7 @@
   .step-num {
     width: 40px; height: 40px; border-radius: 50%;
     background: rgba(210,170,60,0.15); border: 1px solid rgba(210,170,60,0.35);
-    color: var(--accent); font-size: 15px; font-weight: 700;
+    color: var(--accent); font-size: 15px; font-weight: 400; font-family: 'Comico', serif;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
@@ -373,9 +383,13 @@
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border); padding: 28px 80px;
-    display: flex; justify-content: space-between; align-items: center;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center;
     color: var(--muted); font-size: 13px;
   }
+  .footer-left { display: flex; flex-direction: column; gap: 4px; }
+  .footer-center { display: flex; gap: 24px; justify-content: center; }
+  .footer-right { text-align: right; }
 
   @media (max-width: 900px) {
     .about-hero { grid-template-columns: 1fr; min-height: auto; padding: 100px 24px 60px; gap: 48px; }
@@ -408,10 +422,10 @@
 <div class="about-hero" id="about">
   <div class="about-left">
     <h1>Rufina<br><span>Sakavova</span></h1>
-    <div class="label">Digital Fashion Designer · 3D Artist</div>
+    <div class="label">Digital Fashion Designer<br>3D Artist</div>
     <p class="bio">
       I design production-ready 3D garments for games and virtual worlds.
-      Full pipeline ownership — from cloth simulation and sculpting to baking,
+      Full pipeline ownership -from cloth simulation and sculpting to baking,
       texturing, rigging, and engine integration in Unreal Engine and Unity.
       5+ years freelance and studio experience, including commercial shipping at EverStar Studio.
     </p>
@@ -423,28 +437,28 @@
         <div class="comp-icon">🧵</div>
         <div>
           <div class="comp-title">Garment Design & Cloth Simulation</div>
-          <div class="comp-text">Pattern-accurate clothing construction and physics simulation in Marvelous Designer and CLO3D — with real garment knowledge applied to digital fit and movement.</div>
+          <div class="comp-text">Pattern-accurate clothing construction and physics simulation in Marvelous Designer and CLO3D -with real garment knowledge applied to digital fit and movement.</div>
         </div>
       </div>
       <div class="comp-item">
         <div class="comp-icon">🗿</div>
         <div>
           <div class="comp-title">Character Sculpting & 3D Modeling</div>
-          <div class="comp-text">High-poly sculpting in ZBrush, retopology and rigging in Blender. Built for production — optimized meshes, clean topology, proper edge flow.</div>
+          <div class="comp-text">High-poly sculpting in ZBrush, retopology and rigging in Blender. Built for production -optimized meshes, clean topology, proper edge flow.</div>
         </div>
       </div>
       <div class="comp-item">
         <div class="comp-icon">🎨</div>
         <div>
           <div class="comp-title">Baking & Texturing</div>
-          <div class="comp-text">High-to-low baking in Marmoset Toolbag, PBR texturing in Substance Painter — materials that read well both in real-time engines and offline renders.</div>
+          <div class="comp-text">High-to-low baking in Marmoset Toolbag, PBR texturing in Substance Painter -materials that read well both in real-time engines and offline renders.</div>
         </div>
       </div>
       <div class="comp-item">
         <div class="comp-icon">⚙️</div>
         <div>
           <div class="comp-title">Engine Integration</div>
-          <div class="comp-text">Full export and setup in Unreal Engine and Unity — LOD creation, MH Creator wardrobe setup, skinning, animation baking, scene assembly.</div>
+          <div class="comp-text">Full export and setup in Unreal Engine and Unity -LOD creation, MH Creator wardrobe setup, skinning, animation baking, scene assembly.</div>
         </div>
       </div>
     </div>
@@ -455,47 +469,54 @@
      2. PIPELINE OVERVIEW + TOOLS
 ════════════════════════════════════════ -->
 <section id="tools">
-  <div class="label">Workflow</div>
   <h2>Pipeline & Software</h2>
-  <p class="desc">Every tool chosen for a specific job — here's the full chain from concept to engine-ready asset.</p>
+  <p class="desc">Every tool chosen for a specific job -here's the full chain from concept to engine-ready asset.</p>
 
   <div class="pipeline-row">
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/pureref.png" alt="PureRef">
       <div class="tool-name">PureRef</div>
       <div class="tool-role">References</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/zbrush-logo-png_seeklogo-155828.png" alt="ZBrush">
       <div class="tool-name">ZBrush</div>
       <div class="tool-role">Sculpting</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/md-removebg-preview.png" alt="MD">
       <div class="tool-name">MD / CLO3D</div>
       <div class="tool-role">Cloth Sim</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/zbrush-logo-png_seeklogo-155828.png" alt="ZBrush">
       <div class="tool-name">ZBrush</div>
       <div class="tool-role">Cloth Detailing</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/Blender_logo_no_text.svg.webp" alt="Blender">
       <div class="tool-name">Blender</div>
       <div class="tool-role">Retopo & Rig</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/Marmoset Toolbag.png" alt="Marmoset">
       <div class="tool-name">Marmoset</div>
       <div class="tool-role">Baking</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/substance_painter-removebg-preview.png" alt="Substance">
       <div class="tool-name">Substance</div>
       <div class="tool-role">Texturing</div>
     </div>
     <div class="pipe-arrow">→</div>
     <div class="pipe-step">
+      <img class="pipe-step-icon" src="icons/ue.png" alt="UE">
       <div class="tool-name">UE / Unity</div>
       <div class="tool-role">Integration</div>
     </div>
@@ -503,64 +524,63 @@
 
   <div class="tools-grid">
     <div class="tool-card">
-      <div class="tool-card-name">Marvelous Designer / CLO3D</div>
-      <div class="tool-card-purpose">Cloth simulation from real garment patterns. Produces physically accurate drape, fold, and fit on 3D characters.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/md-removebg-preview.png" alt="MD"></div><div class="tool-card-name">Marvelous Designer / CLO3D</div></div>
       <div class="tool-card-badge">Simulation</div>
+      <div class="tool-card-purpose">Cloth simulation from real garment patterns. Produces physically accurate drape, fold, and fit on 3D characters.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">ZBrush</div>
-      <div class="tool-card-purpose">High-poly character sculpting — anatomy, facial features, fabric surface detail, and accessory sculpts.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/zbrush-logo-png_seeklogo-155828.png" alt="ZBrush"></div><div class="tool-card-name">ZBrush</div></div>
       <div class="tool-card-badge">Sculpting</div>
+      <div class="tool-card-purpose">High-poly character sculpting -anatomy, facial features, fabric surface detail, and accessory sculpts.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Blender</div>
-      <div class="tool-card-purpose">Retopology of high-poly meshes, rigging, skinning, and animation baking for export to game engines.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/Blender_logo_no_text.svg.webp" alt="Blender"></div><div class="tool-card-name">Blender</div></div>
       <div class="tool-card-badge">Modeling / Rigging</div>
+      <div class="tool-card-purpose">Retopology of high-poly meshes, rigging, skinning, and animation baking for export to game engines.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Marmoset Toolbag</div>
-      <div class="tool-card-purpose">High-to-low poly baking — normal maps, AO, curvature, thickness. Precision cage baking for complex garments.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/Marmoset Toolbag.png" alt="Marmoset"></div><div class="tool-card-name">Marmoset Toolbag</div></div>
       <div class="tool-card-badge">Baking</div>
+      <div class="tool-card-purpose">High-to-low poly baking -normal maps, AO, curvature, thickness. Precision cage baking for complex garments.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Substance Painter</div>
-      <div class="tool-card-purpose">PBR texturing — albedo, roughness, metallic, opacity. Smart materials and hand-painted detail layering.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/substance_painter-removebg-preview.png" alt="Substance Painter"></div><div class="tool-card-name">Substance Painter</div></div>
       <div class="tool-card-badge">Texturing</div>
+      <div class="tool-card-purpose">PBR texturing -albedo, roughness, metallic, opacity. Smart materials and hand-painted detail layering.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Unreal Engine</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/ue.png" alt="Unreal Engine"></div><div class="tool-card-name">Unreal Engine</div></div>
+      <div class="tool-card-badge cyan">Engine</div>
       <div class="tool-card-purpose">Asset integration, LOD setup, MH Creator wardrobe, basic animation, lighting and scene composition.</div>
-      <div class="tool-card-badge cyan">Engine</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Unity</div>
-      <div class="tool-card-purpose">VRChat SDK integration — avatar setup, clothing attachment, physics components, platform export.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/unity.png" alt="Unity"></div><div class="tool-card-name">Unity</div></div>
       <div class="tool-card-badge cyan">Engine</div>
+      <div class="tool-card-purpose">VRChat SDK integration -avatar setup, clothing attachment, physics components, platform export.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Character Creator 4 / MetaTailor</div>
-      <div class="tool-card-purpose">Character base creation and skin wrapping for production pipelines using MH Creator.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/6989b82b72471-metatailor-Icon.webp" alt="MetaTailor"></div><div class="tool-card-name">Character Creator 4 / MetaTailor</div></div>
       <div class="tool-card-badge">Characters</div>
+      <div class="tool-card-purpose">Character base creation and skin wrapping for production pipelines using MH Creator.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">Adobe Photoshop</div>
-      <div class="tool-card-purpose">Texture refinement, concept overlays, and reference moodboards.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/Adobe_Photoshop.webp" alt="Photoshop"></div><div class="tool-card-name">Adobe Photoshop</div></div>
       <div class="tool-card-badge">2D</div>
+      <div class="tool-card-purpose">Texture refinement, concept overlays, and reference moodboards.</div>
     </div>
     <div class="tool-card">
-      <div class="tool-card-name">PureRef</div>
-      <div class="tool-card-purpose">Reference board curation and moodboard organisation before starting any new character or outfit.</div>
+      <div class="tool-card-header"><div class="tool-card-icon"><img src="icons/pureref.png" alt="PureRef"></div><div class="tool-card-name">PureRef</div></div>
       <div class="tool-card-badge">References</div>
+      <div class="tool-card-purpose">Reference board curation and moodboard organisation before starting any new character or outfit.</div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     3. NINJA PROJECT — STEP-BY-STEP PIPELINE
+     3. NINJA PROJECT -STEP-BY-STEP PIPELINE
 ════════════════════════════════════════ -->
 <section id="ninja">
-  <div class="label">Pipeline in Detail</div>
-  <h2>Ninja Character — Full Production Walkthrough</h2>
+  <h2>Ninja Character -Full Production Walkthrough</h2>
   <p class="desc">A complete breakdown of how a character goes from reference board to engine-ready wardrobe asset, step by step.</p>
 
   <div class="steps">
@@ -574,7 +594,7 @@
       <div class="step-content">
         <div class="step-software">PureRef</div>
         <div class="step-title">Reference Collection</div>
-        <div class="step-desc">Before touching any 3D software, I build a dense reference board in PureRef — historical ninja garments, fabric types, silhouettes, movement references, and real-world kenjutsu attire. Solid references prevent guess-work downstream.</div>
+        <div class="step-desc">Before touching any 3D software, I build a dense reference board in PureRef -historical ninja garments, fabric types, silhouettes, movement references, and real-world kenjutsu attire. Solid references prevent guess-work downstream.</div>
       </div>
       <div class="step-image" id="ninja-img-1" onclick="openLightbox(this)">
         <img src="Ninja/Reference.png" alt="PureRef reference board">
@@ -590,7 +610,7 @@
       <div class="step-content">
         <div class="step-software">ZBrush</div>
         <div class="step-title">Character Sculpting</div>
-        <div class="step-desc">High-poly sculpting of the character's head, body, and face. Anatomy knowledge is applied here — musculature under clothing, proportional balance, and realistic surface detail that will transfer through baking.</div>
+        <div class="step-desc">High-poly sculpting of the character's head, body, and face. Anatomy knowledge is applied here -musculature under clothing, proportional balance, and realistic surface detail that will transfer through baking.</div>
       </div>
       <div class="carousel" id="ninja-img-2">
         <div class="carousel-track">
@@ -616,7 +636,7 @@
       <div class="step-content">
         <div class="step-software">Marvelous Designer</div>
         <div class="step-title">Clothing Creation</div>
-        <div class="step-desc">Garments are constructed from real 2D pattern pieces, sewn together in MD, and simulated on the character body. This produces physically accurate cloth behaviour — drape, tension, fold lines — that would be impossible to model by hand.</div>
+        <div class="step-desc">Garments are constructed from real 2D pattern pieces, sewn together in MD, and simulated on the character body. This produces physically accurate cloth behaviour -drape, tension, fold lines -that would be impossible to model by hand.</div>
       </div>
       <div class="step-image" id="ninja-img-3" onclick="openLightbox(this)">
         <img src="Ninja/Cloth/MarvelousDesigner.png" alt="Marvelous Designer clothing creation">
@@ -632,7 +652,7 @@
       <div class="step-content">
         <div class="step-software">ZBrush</div>
         <div class="step-title">Clothing Detailing</div>
-        <div class="step-desc">The simulated cloth mesh is brought into ZBrush to add surface detail — fabric weave, stitching, folds, wrinkles, and material texture that Marvelous Designer doesn't produce. This high-frequency detail bakes down onto the low-poly later.</div>
+        <div class="step-desc">The simulated cloth mesh is brought into ZBrush to add surface detail -fabric weave, stitching, folds, wrinkles, and material texture that Marvelous Designer doesn't produce. This high-frequency detail bakes down onto the low-poly later.</div>
       </div>
       <div class="carousel" id="ninja-img-4">
         <div class="carousel-track">
@@ -702,7 +722,7 @@
       <div class="step-content">
         <div class="step-software">Substance Painter</div>
         <div class="step-title">Texturing</div>
-        <div class="step-desc">PBR texture set creation — fabric weave patterns, wear and soiling, stitching detail, and material variation across linen, leather, and metal trim. Smart materials layered with hand-painted breakup.</div>
+        <div class="step-desc">PBR texture set creation -fabric weave patterns, wear and soiling, stitching detail, and material variation across linen, leather, and metal trim. Smart materials layered with hand-painted breakup.</div>
       </div>
       <div class="step-image" id="ninja-img-7" onclick="openLightbox(this)">
         <img src="Ninja/Cloth/SubstancePainter.png" alt="Substance Painter texturing">
@@ -734,7 +754,7 @@
       <div class="step-content">
         <div class="step-software">Blender</div>
         <div class="step-title">Clothing Skinning</div>
-        <div class="step-desc">Character exported back to Blender for precise clothing skinning — weight painting each garment piece to the skeleton with attention to layered cloth, secondary motion, and joint deformation at elbows, knees, and hips.</div>
+        <div class="step-desc">Character exported back to Blender for precise clothing skinning -weight painting each garment piece to the skeleton with attention to layered cloth, secondary motion, and joint deformation at elbows, knees, and hips.</div>
       </div>
       <div class="step-image" id="ninja-img-9" onclick="openLightbox(this)">
         <img src="Ninja/Cloth/Blender_Skinning.png" alt="Blender skinning">
@@ -749,7 +769,7 @@
       <div class="step-content">
         <div class="step-software">Unreal Engine + MH Wardrobe</div>
         <div class="step-title">Final Engine Integration</div>
-        <div class="step-desc">Final clothing export to UE and assembled as an MH Wardrobe entry — LOD setup, material assignments, and in-engine validation to confirm performance and visual quality at all LOD levels.</div>
+        <div class="step-desc">Final clothing export to UE and assembled as an MH Wardrobe entry -LOD setup, material assignments, and in-engine validation to confirm performance and visual quality at all LOD levels.</div>
       </div>
       <div class="carousel" id="ninja-img-10">
         <div class="carousel-track">
@@ -787,22 +807,14 @@
      4. OTHER PROJECTS
 ════════════════════════════════════════ -->
 <section id="projects">
-  <div class="label">Selected Work</div>
   <h2>Other Projects</h2>
   <p class="desc">Production work from EverStar Studio and freelance VRChat clients.</p>
 
   <!-- EverStar NPC -->
   <div class="project-block">
     <div class="project-header">
-      <div class="project-title">EverStar Studio — NPC Character Wardrobe</div>
+      <div class="project-title">EverStar Studio -NPC Character Wardrobe</div>
       <div class="project-meta">EverStar Studio · March 2024 – May 2025</div>
-      <div class="project-tags">
-        <span class="tag-purple">Marvelous Designer</span>
-        <span class="tag-purple">Blender</span>
-        <span class="tag-purple">Substance Painter</span>
-        <span class="tag-purple">Unreal Engine</span>
-        <span class="tag-cyan">Game Production</span>
-      </div>
     </div>
     <div class="gallery">
       <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m2.jpg" loading="lazy" alt="NPC"></div>
@@ -843,14 +855,8 @@
   <!-- Cloth Simulations -->
   <div class="project-block">
     <div class="project-header">
-      <div class="project-title">Cloth Simulation — Animation Baking</div>
+      <div class="project-title">Cloth Simulation -Animation Baking</div>
       <div class="project-meta">EverStar Studio · Marvelous Designer workflow</div>
-      <div class="project-tags">
-        <span class="tag-purple">Marvelous Designer</span>
-        <span class="tag-purple">CLO3D</span>
-        <span class="tag-cyan">Cloth Physics</span>
-        <span class="tag-cyan">Animation</span>
-      </div>
     </div>
     <div class="videos-row">
       <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/Cloth_Simulation1.mp4" type="video/mp4"></video></div>
@@ -864,15 +870,8 @@
   <!-- VRChat Unity -->
   <div class="project-block">
     <div class="project-header">
-      <div class="project-title">VRChat Character — Unity Integration</div>
+      <div class="project-title">VRChat Character -Unity Integration</div>
       <div class="project-meta">Freelance · Avatar & Clothing for VR Platforms</div>
-      <div class="project-tags">
-        <span class="tag-purple">Blender</span>
-        <span class="tag-purple">Unity</span>
-        <span class="tag-purple">VRChat SDK</span>
-        <span class="tag-cyan">VR Fashion</span>
-        <span class="tag-cyan">Avatar</span>
-      </div>
     </div>
     <div class="gallery wide" style="margin-bottom:14px;">
       <div class="gallery-item" onclick="openLightbox(this)"><img src="VRChat_Unity/Снимок экрана 2026-07-29 235830.png" loading="lazy" alt="VRChat"></div>
@@ -892,9 +891,8 @@
      5. ARTSTATION & JINXXY
 ════════════════════════════════════════ -->
 <section id="artstation">
-  <div class="label">ArtStation · Jinxxy</div>
   <h2>Freelance & Marketplace Work</h2>
-  <p class="desc">3D clothing for Marvelous Designer, CLO3D and virtual fashion platforms — published on ArtStation and Jinxxy.</p>
+  <p class="desc">3D clothing for Marvelous Designer, CLO3D and virtual fashion platforms -published on ArtStation and Jinxxy.</p>
 
   <div class="gallery wide">
     <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-.jpg" loading="lazy" alt=""></div>
@@ -938,21 +936,19 @@
     <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fdg.png" loading="lazy" alt=""></div>
   </div>
 
-  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:40px;">
-    <a href="https://www.artstation.com/fina_sakau" target="_blank" class="btn btn-outline">ArtStation ↗</a>
-    <a href="https://jinxxy.com/finafur/products" target="_blank" class="btn btn-outline">Jinxxy ↗</a>
-  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span>Rufina Sakavova — Digital Fashion Designer</span>
-  <div style="display:flex;gap:20px;">
-    <a href="https://www.artstation.com/fina_sakau" target="_blank" style="color:var(--muted);text-decoration:none;font-size:13px;">ArtStation</a>
-    <a href="https://jinxxy.com/finafur/products" target="_blank" style="color:var(--muted);text-decoration:none;font-size:13px;">Jinxxy</a>
-    <a href="mailto:rufina.sakau@gmail.com" style="color:var(--muted);text-decoration:none;font-size:13px;">Email</a>
+  <div class="footer-left">
+    <span>Rufina Sakavova</span>
+    <span>Email: <a href="mailto:rufina.sakau@gmail.com" style="color:var(--muted);text-decoration:none;">rufina.sakau@gmail.com</a></span>
   </div>
-  <span>Almaty, Kazakhstan · Open to Remote</span>
+  <div class="footer-center">
+    <a href="https://www.artstation.com/fina_sakau" target="_blank" style="color:var(--muted);text-decoration:none;">ArtStation</a>
+    <a href="https://jinxxy.com/finafur/products" target="_blank" style="color:var(--muted);text-decoration:none;">Jinxxy</a>
+  </div>
+  <div class="footer-right">Almaty, Kazakhstan · Open to Remote</div>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -973,7 +969,7 @@
     let img = (el.tagName === 'IMG') ? el : el.querySelector('img');
     if (!img) return;
 
-    // Check if it's inside a carousel or gallery — collect siblings
+    // Check if it's inside a carousel or gallery -collect siblings
     const carousel = img.closest('.carousel');
     const galleryItem = img.closest('.gallery-item');
 
