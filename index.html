@@ -147,10 +147,35 @@
 
   /* ── 2. TOOLS ── */
   #tools { background: var(--bg2); }
-  .pipeline-row {
-    display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+  .pipeline-wrap {
+    position: relative;
     margin-bottom: 56px;
   }
+  .pipeline-wrap::before,
+  .pipeline-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .pipeline-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg2), transparent);
+  }
+  .pipeline-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg2), transparent);
+  }
+  .pipeline-row {
+    display: flex; align-items: center; flex-wrap: nowrap; gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 20px;
+  }
+  .pipeline-row::-webkit-scrollbar { display: none; }
   .pipe-step {
     background: transparent; border: none;
     border-radius: 0; padding: 14px 20px; text-align: center; min-width: 120px;
@@ -434,21 +459,11 @@
 
     h2 { font-size: clamp(22px, 6vw, 32px); }
 
-    .pipeline-row {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 0;
-      padding-bottom: 12px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .pipeline-row::-webkit-scrollbar { display: none; }
-    .pipe-arrow { display: flex; align-items: center; flex-shrink: 0; }
-    .pipe-step { min-width: 80px; flex-shrink: 0; padding: 12px 8px; }
+    .pipe-step { padding: 10px 12px; min-width: 90px; }
     .pipe-step-icon { width: 22px; height: 22px; }
     .pipe-step .tool-name { font-size: 11px; }
     .pipe-step .tool-role { font-size: 10px; }
+    .pipe-arrow { font-size: 14px; padding: 0 4px; }
 
     .tools-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .tool-card { padding: 16px; }
@@ -490,7 +505,8 @@
   @media (max-width: 480px) {
     .about-left h1 { font-size: clamp(44px, 18vw, 72px); }
     .tools-grid { grid-template-columns: 1fr; }
-    .pipeline-row { /* inherits scrollable flex from 768px */ }
+    .pipe-step { min-width: 72px; padding: 8px 8px; }
+    .pipe-arrow { font-size: 12px; padding: 0 2px; }
     .gallery { grid-template-columns: repeat(2, 1fr); }
     .carousel-btn { width: 28px; height: 28px; font-size: 14px; }
   }
@@ -576,6 +592,7 @@
   <h2>Pipeline & Software</h2>
   <p class="desc">Every tool chosen for a specific job -here's the full chain from concept to engine-ready asset.</p>
 
+  <div class="pipeline-wrap">
   <div class="pipeline-row">
     <div class="pipe-step">
       <img class="pipe-step-icon" src="icons/pureref.png" alt="PureRef">
@@ -624,6 +641,7 @@
       <div class="tool-name">UE / Unity</div>
       <div class="tool-role">Integration</div>
     </div>
+  </div>
   </div>
 
   <div class="tools-grid">
@@ -1164,6 +1182,33 @@
     menu.classList.toggle('open');
   }
 
+
+  // Pipeline scroll hint animation
+  (function() {
+    function hintScroll(row) {
+      if (row.scrollWidth <= row.clientWidth) return;
+      var end = row.scrollWidth - row.clientWidth;
+      setTimeout(function() {
+        row.scrollTo({ left: end, behavior: 'smooth' });
+        setTimeout(function() {
+          row.scrollTo({ left: 0, behavior: 'smooth' });
+        }, 1200);
+      }, 600);
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          hintScroll(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.pipeline-row').forEach(function(row) {
+      observer.observe(row);
+    });
+  })();
 </script>
 
 </body>
