@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rufina Sakavova — Digital Fashion Designer</title>
+<style>
+  :root {
+    --bg: #0d0c0b;
+    --bg2: #111010;
+    --bg3: #171614;
+    --accent: #c9a96e;
+    --accent2: #e0c07a;
+    --text: #ede5d8;
+    --muted: #8a7a65;
+    --border: #2a221a;
+    --card: #131210;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,13,15,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px; height: 60px;
+  }
+  .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SHARED */
+  section { padding: 96px 80px; }
+  .label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 10px;
+  }
+  h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .desc { color: var(--muted); max-width: 620px; margin-bottom: 52px; font-size: 16px; line-height: 1.75; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 26px; border-radius: 8px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    transition: all .2s; border: none; cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: #0d0d0f; }
+  .btn-primary:hover { background: #c990ff; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .tag {
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 11px; font-size: 12px; color: var(--muted);
+  }
+  .tag-purple {
+    background: rgba(210,170,60,0.1); border: 1px solid rgba(210,170,60,0.25);
+    color: var(--accent); border-radius: 20px; padding: 3px 12px; font-size: 12px;
+  }
+  .tag-cyan {
+    background: rgba(210,170,60,0.07); border: 1px solid rgba(210,170,60,0.2);
+    color: var(--accent2); border-radius: 20px; padding: 3px 12px; font-size: 12px;
+  }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 64px 0; }
+
+  /* ── 1. ABOUT ── */
+  .about-hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    padding: 120px 80px 80px;
+    position: relative; overflow: hidden;
+  }
+  .about-hero::before {
+    content: ''; position: absolute; top: -150px; right: -150px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(210,170,60,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .about-left {}
+  .about-left .label { margin-bottom: 14px; }
+  .about-left h1 {
+    font-size: clamp(40px, 5.5vw, 72px); font-weight: 700;
+    line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 6px;
+  }
+  .about-left h1 span { color: var(--accent); }
+  .about-left .role { font-size: 18px; color: var(--muted); margin-bottom: 28px; }
+  .about-left .bio { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 32px; max-width: 500px; }
+  .links-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+  .about-right {}
+  .competency-list { display: flex; flex-direction: column; gap: 16px; }
+  .comp-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .comp-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .comp-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .comp-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── 2. TOOLS ── */
+  #tools { background: var(--bg2); }
+  .pipeline-row {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0;
+    margin-bottom: 56px;
+  }
+  .pipe-step {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 120px;
+  }
+  .pipe-step .tool-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .pipe-step .tool-role { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .pipe-arrow { color: var(--accent); font-size: 18px; padding: 0 8px; }
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;
+  }
+  .tool-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px;
+  }
+  .tool-card-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .tool-card-purpose { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .tool-card-badge {
+    display: inline-block; margin-top: 8px;
+    background: rgba(210,170,60,0.1); border: 1px solid rgba(181,123,238,0.2);
+    color: var(--accent); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600;
+  }
+  .tool-card-badge.cyan {
+    background: rgba(210,170,60,0.07); border-color: rgba(126,207,238,0.2); color: var(--accent2);
+  }
+
+  /* ── 3. NINJA PIPELINE ── */
+  #ninja { }
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: grid; grid-template-columns: 56px 1fr 1fr;
+    gap: 0 48px; align-items: start;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num-col {
+    display: flex; flex-direction: column; align-items: center; padding-top: 4px;
+  }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(210,170,60,0.15); border: 1px solid rgba(210,170,60,0.35);
+    color: var(--accent); font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-line {
+    width: 1px; background: var(--border);
+    flex: 1; min-height: 40px; margin-top: 8px;
+  }
+  .step:last-child .step-line { display: none; }
+  .step-content { padding-top: 4px; }
+  .step-software {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 6px;
+  }
+  .step-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .step-image {
+    border-radius: 12px; overflow: hidden;
+    background: var(--bg3); border: 1px solid var(--border);
+    aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .step-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+  .step-image:hover img { transform: scale(1.04); }
+  .step-image.placeholder {
+    flex-direction: column; gap: 10px; cursor: default;
+  }
+  .placeholder-icon { font-size: 32px; opacity: 0.3; }
+  .placeholder-text { font-size: 13px; color: var(--muted); opacity: 0.6; text-align: center; padding: 0 16px; }
+  /* CAROUSEL */
+  .carousel {
+    position: relative; border-radius: 12px; overflow: hidden;
+    background: #000; border: 1px solid var(--border);
+    aspect-ratio: 16/10;
+  }
+  .carousel-track {
+    display: flex; height: 100%;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .carousel-track img {
+    min-width: 100%; height: 100%; object-fit: cover;
+    flex-shrink: 0; cursor: zoom-in;
+  }
+  .carousel-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.12);
+    color: #fff; font-size: 18px; width: 36px; height: 36px;
+    border-radius: 50%; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: background .2s; z-index: 2; user-select: none;
+  }
+  .carousel-btn:hover { background: rgba(210,170,60,0.6); }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+  .carousel-dots {
+    position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px; z-index: 2;
+  }
+  .carousel-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(255,255,255,0.3); cursor: pointer;
+    transition: background .2s;
+  }
+  .carousel-dot.active { background: var(--accent); }
+  /* Big renders carousel */
+  .big-carousel {
+    margin: 48px auto 0;
+    max-width: 90%;
+    aspect-ratio: auto;
+    height: 88vh;
+    min-height: 480px;
+    background: #000;
+    border-radius: 16px;
+    border-color: rgba(255,255,255,0.08);
+  }
+  .big-carousel .carousel-track img {
+    object-fit: cover;
+    height: 100%;
+  }
+  .big-carousel .carousel-btn {
+    width: 48px; height: 48px; font-size: 22px;
+  }
+  .big-carousel .carousel-dot {
+    width: 9px; height: 9px;
+  }
+
+  /* FULLWIDTH CAROUSEL */
+  .fw-carousel-wrap {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    overflow: hidden;
+  }
+  .fw-carousel {
+    position: relative; width: 100%; height: 70vh; min-height: 400px; overflow: hidden;
+  }
+  .fw-track {
+    display: flex; height: 100%;
+    transition: transform .4s cubic-bezier(.4,0,.2,1);
+  }
+  .fw-track img {
+    min-width: 100%; height: 100%; object-fit: cover;
+    flex-shrink: 0; cursor: zoom-in;
+  }
+  .fw-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+    color: white; font-size: 22px; width: 52px; height: 52px;
+    border-radius: 50%; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: background .2s; z-index: 2;
+  }
+  .fw-btn:hover { background: rgba(210,170,60,0.55); }
+  .fw-prev { left: 28px; }
+  .fw-next { right: 28px; }
+  .fw-dots {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 8px; z-index: 2;
+  }
+  .fw-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.3); cursor: pointer; transition: background .2s;
+  }
+  .fw-dot.active { background: var(--accent); }
+  .fw-counter {
+    position: absolute; bottom: 20px; right: 28px;
+    color: rgba(255,255,255,0.4); font-size: 13px; z-index: 2;
+  }
+
+  /* ── 4. PROJECTS ── */
+  #projects { background: var(--bg2); }
+  .project-block { margin-bottom: 64px; }
+  .project-block:last-child { margin-bottom: 0; }
+  .project-header { margin-bottom: 28px; }
+  .project-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .project-meta { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .gallery {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .gallery.wide { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+  .gallery-item {
+    overflow: hidden; border-radius: 10px;
+    background: var(--bg3); border: 1px solid var(--border); cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%; height: 220px; object-fit: cover; display: block; transition: transform .3s;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .videos-row {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;
+    margin-top: 14px;
+  }
+  .video-wrap {
+    border-radius: 10px; overflow: hidden;
+    background: #000; border: 1px solid var(--border);
+  }
+  .video-wrap video { width: 100%; display: block; max-height: 380px; object-fit: cover; }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.93); align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 88vw; max-height: 88vh; border-radius: 8px; user-select: none; }
+  .lb-close {
+    position: absolute; top: 20px; right: 28px;
+    color: white; font-size: 30px; cursor: pointer;
+    background: none; border: none; opacity: 0.65;
+  }
+  .lb-close:hover { opacity: 1; }
+  .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; font-size: 22px; width: 48px; height: 48px;
+    border-radius: 50%; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: background .2s; z-index: 2;
+  }
+  .lb-nav:hover { background: rgba(210,170,60,0.5); }
+  .lb-prev { left: 24px; }
+  .lb-next { right: 24px; }
+  .lb-nav.hidden { opacity: 0; pointer-events: none; }
+  .lb-counter {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border); padding: 28px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--muted); font-size: 13px;
+  }
+
+  @media (max-width: 900px) {
+    .about-hero { grid-template-columns: 1fr; min-height: auto; padding: 100px 24px 60px; gap: 48px; }
+    section { padding: 72px 24px; }
+    .step { grid-template-columns: 40px 1fr; }
+    .step-image { display: none; }
+    footer { padding: 24px; flex-direction: column; gap: 6px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Rufina Sakavova</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#ninja">Pipeline</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#artstation">ArtStation</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════
+     1. ABOUT + COMPETENCIES
+════════════════════════════════════════ -->
+<div class="about-hero" id="about">
+  <div class="about-left">
+    <div class="label">Digital Fashion Designer · 3D Artist</div>
+    <h1>Rufina<br><span>Sakavova</span></h1>
+    <div class="role">3D Clothing · Game Assets · VR Fashion</div>
+    <p class="bio">
+      I design production-ready 3D garments for games and virtual worlds.
+      Full pipeline ownership — from cloth simulation and sculpting to baking,
+      texturing, rigging, and engine integration in Unreal Engine and Unity.
+      5+ years freelance and studio experience, including commercial shipping at EverStar Studio.
+    </p>
+    <div class="links-row">
+      <a href="https://www.artstation.com/fina_sakau" target="_blank" class="btn btn-primary">ArtStation ↗</a>
+      <a href="https://jinxxy.com/finafur/products" target="_blank" class="btn btn-outline">Jinxxy Store ↗</a>
+      <a href="mailto:rufina.sakau@gmail.com" class="btn btn-outline">rufina.sakau@gmail.com</a>
+    </div>
+    <div style="display:flex;gap:24px;padding-top:28px;border-top:1px solid var(--border);">
+      <div><div style="font-size:28px;font-weight:700;color:var(--accent)">5+</div><div style="font-size:12px;color:var(--muted)">Years experience</div></div>
+      <div><div style="font-size:28px;font-weight:700;color:var(--accent)">28</div><div style="font-size:12px;color:var(--muted)">ArtStation works</div></div>
+      <div><div style="font-size:28px;font-weight:700;color:var(--accent)">9</div><div style="font-size:12px;color:var(--muted)">VR assets published</div></div>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="competency-list">
+      <div class="comp-item">
+        <div class="comp-icon">🧵</div>
+        <div>
+          <div class="comp-title">Garment Design & Cloth Simulation</div>
+          <div class="comp-text">Pattern-accurate clothing construction and physics simulation in Marvelous Designer and CLO3D — with real garment knowledge applied to digital fit and movement.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">🗿</div>
+        <div>
+          <div class="comp-title">Character Sculpting & 3D Modeling</div>
+          <div class="comp-text">High-poly sculpting in ZBrush, retopology and rigging in Blender. Built for production — optimized meshes, clean topology, proper edge flow.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">🎨</div>
+        <div>
+          <div class="comp-title">Baking & Texturing</div>
+          <div class="comp-text">High-to-low baking in Marmoset Toolbag, PBR texturing in Substance Painter — materials that read well both in real-time engines and offline renders.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">⚙️</div>
+        <div>
+          <div class="comp-title">Engine Integration</div>
+          <div class="comp-text">Full export and setup in Unreal Engine and Unity — LOD creation, MH Creator wardrobe setup, skinning, animation baking, scene assembly.</div>
+        </div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-icon">🤖</div>
+        <div>
+          <div class="comp-title">AI-Accelerated Workflow</div>
+          <div class="comp-text">Using Hunyuan 3D and prompt engineering to generate references and base models, cutting iteration time without sacrificing quality control.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2. PIPELINE OVERVIEW + TOOLS
+════════════════════════════════════════ -->
+<section id="tools">
+  <div class="label">Workflow</div>
+  <h2>Pipeline & Software</h2>
+  <p class="desc">Every tool chosen for a specific job — here's the full chain from concept to engine-ready asset.</p>
+
+  <div class="pipeline-row">
+    <div class="pipe-step">
+      <div class="tool-name">PureRef</div>
+      <div class="tool-role">References</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">ZBrush</div>
+      <div class="tool-role">Sculpting</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">MD / CLO3D</div>
+      <div class="tool-role">Cloth Sim</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">ZBrush</div>
+      <div class="tool-role">Cloth Detailing</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">Blender</div>
+      <div class="tool-role">Retopo & Rig</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">Marmoset</div>
+      <div class="tool-role">Baking</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">Substance</div>
+      <div class="tool-role">Texturing</div>
+    </div>
+    <div class="pipe-arrow">→</div>
+    <div class="pipe-step">
+      <div class="tool-name">UE / Unity</div>
+      <div class="tool-role">Integration</div>
+    </div>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-card-name">Marvelous Designer / CLO3D</div>
+      <div class="tool-card-purpose">Cloth simulation from real garment patterns. Produces physically accurate drape, fold, and fit on 3D characters.</div>
+      <div class="tool-card-badge">Simulation</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">ZBrush</div>
+      <div class="tool-card-purpose">High-poly character sculpting — anatomy, facial features, fabric surface detail, and accessory sculpts.</div>
+      <div class="tool-card-badge">Sculpting</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Blender</div>
+      <div class="tool-card-purpose">Retopology of high-poly meshes, rigging, skinning, and animation baking for export to game engines.</div>
+      <div class="tool-card-badge">Modeling / Rigging</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Marmoset Toolbag</div>
+      <div class="tool-card-purpose">High-to-low poly baking — normal maps, AO, curvature, thickness. Precision cage baking for complex garments.</div>
+      <div class="tool-card-badge">Baking</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Substance Painter</div>
+      <div class="tool-card-purpose">PBR texturing — albedo, roughness, metallic, opacity. Smart materials and hand-painted detail layering.</div>
+      <div class="tool-card-badge">Texturing</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Unreal Engine</div>
+      <div class="tool-card-purpose">Asset integration, LOD setup, MH Creator wardrobe, basic animation, lighting and scene composition.</div>
+      <div class="tool-card-badge cyan">Engine</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Unity</div>
+      <div class="tool-card-purpose">VRChat SDK integration — avatar setup, clothing attachment, physics components, platform export.</div>
+      <div class="tool-card-badge cyan">Engine</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Character Creator 4 / MetaTailor</div>
+      <div class="tool-card-purpose">Character base creation and skin wrapping for production pipelines using MH Creator.</div>
+      <div class="tool-card-badge">Characters</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Adobe Photoshop</div>
+      <div class="tool-card-purpose">Texture refinement, concept overlays, and reference moodboards.</div>
+      <div class="tool-card-badge">2D</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">Hunyuan 3D</div>
+      <div class="tool-card-purpose">AI-generated base models and reference images to accelerate ideation without replacing craft.</div>
+      <div class="tool-card-badge cyan">AI</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-name">PureRef</div>
+      <div class="tool-card-purpose">Reference board curation and moodboard organisation before starting any new character or outfit.</div>
+      <div class="tool-card-badge">References</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     3. NINJA PROJECT — STEP-BY-STEP PIPELINE
+════════════════════════════════════════ -->
+<section id="ninja">
+  <div class="label">Pipeline in Detail</div>
+  <h2>Ninja Character — Full Production Walkthrough</h2>
+  <p class="desc">A complete breakdown of how a character goes from reference board to engine-ready wardrobe asset, step by step.</p>
+
+  <div class="steps">
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">PureRef</div>
+        <div class="step-title">Reference Collection</div>
+        <div class="step-desc">Before touching any 3D software, I build a dense reference board in PureRef — historical ninja garments, fabric types, silhouettes, movement references, and real-world kenjutsu attire. Solid references prevent guess-work downstream.</div>
+      </div>
+      <div class="step-image" id="ninja-img-1" onclick="openLightbox(this)">
+        <img src="Ninja/Reference.png" alt="PureRef reference board">
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">ZBrush</div>
+        <div class="step-title">Character Sculpting</div>
+        <div class="step-desc">High-poly sculpting of the character's head, body, and face. Anatomy knowledge is applied here — musculature under clothing, proportional balance, and realistic surface detail that will transfer through baking.</div>
+      </div>
+      <div class="carousel" id="ninja-img-2">
+        <div class="carousel-track">
+          <img src="Ninja/Character/Снимок экрана 2026-08-15 153401.png" alt="ZBrush sculpt front">
+          <img src="Ninja/Character/Снимок экрана 2026-08-15 153408.png" alt="ZBrush sculpt side">
+          <img src="Ninja/Character/Снимок экрана 2026-08-15 153416.png" alt="ZBrush sculpt">
+          <img src="Ninja/Character/Снимок экрана 2026-08-15 153446.png" alt="ZBrush sculpt">
+          <img src="Ninja/Character/Снимок экрана 2026-08-15 153501.png" alt="ZBrush sculpt">
+          <img src="Ninja/Character/Снимок экрана 2026-08-15 153528.png" alt="ZBrush hand detail">
+        </div>
+        <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+        <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Marvelous Designer</div>
+        <div class="step-title">Clothing Creation</div>
+        <div class="step-desc">Garments are constructed from real 2D pattern pieces, sewn together in MD, and simulated on the character body. This produces physically accurate cloth behaviour — drape, tension, fold lines — that would be impossible to model by hand.</div>
+      </div>
+      <div class="step-image" id="ninja-img-3" onclick="openLightbox(this)">
+        <img src="Ninja/Cloth/MarvelousDesigner.png" alt="Marvelous Designer clothing creation">
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">4</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">ZBrush</div>
+        <div class="step-title">Clothing Detailing</div>
+        <div class="step-desc">The simulated cloth mesh is brought into ZBrush to add surface detail — fabric weave, stitching, folds, wrinkles, and material texture that Marvelous Designer doesn't produce. This high-frequency detail bakes down onto the low-poly later.</div>
+      </div>
+      <div class="carousel" id="ninja-img-4">
+        <div class="carousel-track">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155143.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155204.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155213.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155242.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155247.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155338.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155343.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155412.png" alt="ZBrush cloth detail">
+          <img src="Ninja/Cloth/Zbrush_cloth/Снимок экрана 2026-08-15 155416.png" alt="ZBrush cloth detail">
+        </div>
+        <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+        <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">5</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Blender</div>
+        <div class="step-title">Retopology</div>
+        <div class="step-desc">The high-density simulation mesh is retopologised in Blender to a clean, game-ready low-poly mesh. Edge loops follow the garment seams and animation deformation areas to preserve silhouette and fold shape at runtime.</div>
+      </div>
+      <div class="carousel" id="ninja-img-5">
+        <div class="carousel-track">
+          <img src="Ninja/Cloth/Retop-Blender/Снимок экрана 2026-08-15 161502.png" alt="Blender retopology">
+          <img src="Ninja/Cloth/Retop-Blender/Снимок экрана 2026-08-15 161507.png" alt="Blender retopology">
+          <img src="Ninja/Cloth/Retop-Blender/Снимок экрана 2026-08-15 161524.png" alt="Blender retopology">
+          <img src="Ninja/Cloth/Retop-Blender/Снимок экрана 2026-08-15 161531.png" alt="Blender retopology">
+          <img src="Ninja/Cloth/Retop-Blender/Снимок экрана 2026-08-15 161538.png" alt="Blender retopology">
+        </div>
+        <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+        <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">6</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Marmoset Toolbag</div>
+        <div class="step-title">Baking (High → Low)</div>
+        <div class="step-desc">Normal maps, AO, curvature, and thickness baked from the high-poly onto the game-ready low-poly in Marmoset. Cage-based baking handles tight geometry and layered garment areas that standard bakers struggle with.</div>
+      </div>
+      <div class="step-image" id="ninja-img-6b" onclick="openLightbox(this)">
+        <img src="Ninja/Marmoset.png" alt="Marmoset Toolbag baking">
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">7</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Substance Painter</div>
+        <div class="step-title">Texturing</div>
+        <div class="step-desc">PBR texture set creation — fabric weave patterns, wear and soiling, stitching detail, and material variation across linen, leather, and metal trim. Smart materials layered with hand-painted breakup.</div>
+      </div>
+      <div class="step-image" id="ninja-img-7" onclick="openLightbox(this)">
+        <img src="Ninja/Cloth/SubstancePainter.png" alt="Substance Painter texturing">
+      </div>
+    </div>
+
+    <!-- STEP 8 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">8</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Unreal Engine + MH Creator</div>
+        <div class="step-title">Character Export & Skin Wrapping</div>
+        <div class="step-desc">Character exported to UE, then skin-wrapped using MH Creator to bind the clothing mesh correctly to the character skeleton. This ensures deformation follows anatomy rather than just bone transforms.</div>
+      </div>
+      <div class="step-image" id="ninja-img-8" onclick="openLightbox(this)">
+        <img src="Ninja/Character/UE_MHCreator.png" alt="UE + MH Creator skin wrap">
+      </div>
+    </div>
+
+    <!-- STEP 9 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">9</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Blender</div>
+        <div class="step-title">Clothing Skinning</div>
+        <div class="step-desc">Character exported back to Blender for precise clothing skinning — weight painting each garment piece to the skeleton with attention to layered cloth, secondary motion, and joint deformation at elbows, knees, and hips.</div>
+      </div>
+      <div class="step-image" id="ninja-img-9" onclick="openLightbox(this)">
+        <img src="Ninja/Cloth/Blender_Skinning.png" alt="Blender skinning">
+      </div>
+    </div>
+
+    <!-- STEP 10 -->
+    <div class="step">
+      <div class="step-num-col">
+        <div class="step-num">10</div>
+      </div>
+      <div class="step-content">
+        <div class="step-software">Unreal Engine + MH Wardrobe</div>
+        <div class="step-title">Final Engine Integration</div>
+        <div class="step-desc">Final clothing export to UE and assembled as an MH Wardrobe entry — LOD setup, material assignments, and in-engine validation to confirm performance and visual quality at all LOD levels.</div>
+      </div>
+      <div class="carousel" id="ninja-img-10">
+        <div class="carousel-track">
+          <img src="Ninja/NewLevelSequence.0000.4.png" alt="Final render" loading="lazy">
+          <img src="Ninja/MH_Wardrobe.png" alt="MH Wardrobe setup" loading="lazy">
+        </div>
+        <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+        <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Big renders carousel -->
+  <div class="carousel big-carousel" id="ninja-renders">
+    <div class="carousel-track">
+      <img src="Ninja/1.png" alt="Final render" loading="lazy">
+      <img src="Ninja/2.png" alt="Final render" loading="lazy">
+      <img src="Ninja/3.png" alt="Final render" loading="lazy">
+      <img src="Ninja/4.png" alt="Final render" loading="lazy">
+      <img src="Ninja/5.png" alt="Final render" loading="lazy">
+      <img src="Ninja/6.png" alt="Final render" loading="lazy">
+      <img src="Ninja/7.png" alt="Final render" loading="lazy">
+      <img src="Ninja/8.png" alt="Final render" loading="lazy">
+    </div>
+    <button class="carousel-btn prev" onclick="carouselMove(this,-1)">&#8592;</button>
+    <button class="carousel-btn next" onclick="carouselMove(this,1)">&#8594;</button>
+    <div class="carousel-dots"></div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     4. OTHER PROJECTS
+════════════════════════════════════════ -->
+<section id="projects">
+  <div class="label">Selected Work</div>
+  <h2>Other Projects</h2>
+  <p class="desc">Production work from EverStar Studio and freelance VRChat clients.</p>
+
+  <!-- EverStar NPC -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-title">EverStar Studio — NPC Character Wardrobe</div>
+      <div class="project-meta">EverStar Studio · March 2024 – May 2025</div>
+      <div class="project-tags">
+        <span class="tag-purple">Marvelous Designer</span>
+        <span class="tag-purple">Blender</span>
+        <span class="tag-purple">Substance Painter</span>
+        <span class="tag-purple">Unreal Engine</span>
+        <span class="tag-cyan">Game Production</span>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m2.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m3.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m4.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m5.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m6.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m7.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m8.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m9.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m10.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m11.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m12.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m13.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m14.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m16.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m17.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m18.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m19.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m20.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m21.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m22.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/m23.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/f13.jpg" loading="lazy" alt="NPC"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="EverStar/NPC/15.jpg" loading="lazy" alt="NPC"></div>
+    </div>
+    <div class="videos-row">
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/NPC/Запись экрана 2025-01-05 230534.mp4" type="video/mp4"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/NPC/Запись экрана 2025-01-07 204142.mp4" type="video/mp4"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/NPC/Запись экрана 2025-01-30 180723.mp4" type="video/mp4"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/NPC/Запись экрана 2025-02-04 201446.mp4" type="video/mp4"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/NPC/Запись экрана 2025-02-11 170133.mp4" type="video/mp4"></video></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Cloth Simulations -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-title">Cloth Simulation — Animation Baking</div>
+      <div class="project-meta">EverStar Studio · Marvelous Designer workflow</div>
+      <div class="project-tags">
+        <span class="tag-purple">Marvelous Designer</span>
+        <span class="tag-purple">CLO3D</span>
+        <span class="tag-cyan">Cloth Physics</span>
+        <span class="tag-cyan">Animation</span>
+      </div>
+    </div>
+    <div class="videos-row">
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/Cloth_Simulation1.mp4" type="video/mp4"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/Cloth_Simulation2.mov" type="video/quicktime"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="EverStar/Cloth_Simulation3.mp4" type="video/mp4"></video></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- VRChat Unity -->
+  <div class="project-block">
+    <div class="project-header">
+      <div class="project-title">VRChat Character — Unity Integration</div>
+      <div class="project-meta">Freelance · Avatar & Clothing for VR Platforms</div>
+      <div class="project-tags">
+        <span class="tag-purple">Blender</span>
+        <span class="tag-purple">Unity</span>
+        <span class="tag-purple">VRChat SDK</span>
+        <span class="tag-cyan">VR Fashion</span>
+        <span class="tag-cyan">Avatar</span>
+      </div>
+    </div>
+    <div class="gallery wide" style="margin-bottom:14px;">
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="VRChat_Unity/Снимок экрана 2026-07-29 235830.png" loading="lazy" alt="VRChat"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="VRChat_Unity/Снимок экрана 2026-07-29 235840.png" loading="lazy" alt="VRChat"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="VRChat_Unity/Снимок экрана 2026-07-29 235949.png" loading="lazy" alt="VRChat"></div>
+      <div class="gallery-item" onclick="openLightbox(this)"><img src="VRChat_Unity/Снимок экрана 2026-07-30 000000.png" loading="lazy" alt="VRChat"></div>
+    </div>
+    <div class="videos-row">
+      <div class="video-wrap"><video controls preload="metadata"><source src="VRChat_Unity/VRChat_Character_Unity1.mp4" type="video/mp4"></video></div>
+      <div class="video-wrap"><video controls preload="metadata"><source src="VRChat_Unity/VRChat_Character_Unity2.mp4" type="video/mp4"></video></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     5. ARTSTATION & JINXXY
+════════════════════════════════════════ -->
+<section id="artstation">
+  <div class="label">ArtStation · Jinxxy</div>
+  <h2>Freelance & Marketplace Work</h2>
+  <p class="desc">3D clothing for Marvelous Designer, CLO3D and virtual fashion platforms — published on ArtStation and Jinxxy.</p>
+
+  <div class="gallery wide">
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-3.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-3 (1).jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-4.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-5.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-6.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-7.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-14.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-olio.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-r4.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-prev-39-u-for-portfolio.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-prev-39-u-for-portfolio (1).jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-prev-39-u-for-portfolio (2).jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-prev-39-u-for-portfolio10.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-prev-39-u-for-digital-creator4s.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fina-sakau-prev-39-u-for-digital-creato5rs.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-dress-marvelous-designer-3d-model-4f8003a6d4.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-dress-marvelous-designer-3d-model-1cc34349a8.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-outfit-marvelous-designer-3d-model-cb14f027f4.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-outfit-marvelous-designer-3d-model-ff0eb697bb.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-outfit-marvelous-designer-3d-model-f9bc5c0a49.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-skirts-marvelous-designer-3d-model-849ccffc63.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-skirts-marvelous-designer-3d-model-20d1da2605.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-tops-marvelous-designer-3d-model-d2f2e020ad.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-tops-marvelous-designer-3d-model-f9dc0f71fd.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-tops-marvelous-designer-3d-model-obj-zpac.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-tops-marvelous-designer-3d-model-obj-zpac (1).jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/female-baseball-fan-outfit-marvelous-designer-3d-model-1154fbe530.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/tennis-outfit-marvelous-designer-3d-model-a7b7c6b90f.jpg" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Render_Viewport7.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Render_Viewport8.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Render_Viewport14.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Skirt8.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Untitled.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Untitled_001.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Untitled_008.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Untitled_009.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/Untitled_010.png" loading="lazy" alt=""></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="Artstation_Jinxxy/fdg.png" loading="lazy" alt=""></div>
+  </div>
+
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:40px;">
+    <a href="https://www.artstation.com/fina_sakau" target="_blank" class="btn btn-outline">ArtStation ↗</a>
+    <a href="https://jinxxy.com/finafur/products" target="_blank" class="btn btn-outline">Jinxxy ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Rufina Sakavova — Digital Fashion Designer</span>
+  <div style="display:flex;gap:20px;">
+    <a href="https://www.artstation.com/fina_sakau" target="_blank" style="color:var(--muted);text-decoration:none;font-size:13px;">ArtStation</a>
+    <a href="https://jinxxy.com/finafur/products" target="_blank" style="color:var(--muted);text-decoration:none;font-size:13px;">Jinxxy</a>
+    <a href="mailto:rufina.sakau@gmail.com" style="color:var(--muted);text-decoration:none;font-size:13px;">Email</a>
+  </div>
+  <span>Almaty, Kazakhstan · Open to Remote</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="lbBgClick(event)">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbMove(-1)">&#8592;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-nav lb-next" onclick="lbMove(1)">&#8594;</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+  // ── Lightbox ──
+  let _lbImgs = [], _lbIdx = 0;
+
+  function openLightbox(el) {
+    // Find the image that was clicked
+    let img = (el.tagName === 'IMG') ? el : el.querySelector('img');
+    if (!img) return;
+
+    // Check if it's inside a carousel or gallery — collect siblings
+    const carousel = img.closest('.carousel');
+    const galleryItem = img.closest('.gallery-item');
+
+    if (carousel) {
+      _lbImgs = Array.from(carousel.querySelectorAll('.carousel-track img')).map(i => i.src);
+      _lbIdx  = _lbImgs.indexOf(img.src);
+    } else if (galleryItem) {
+      const grid = galleryItem.parentElement;
+      _lbImgs = Array.from(grid.querySelectorAll('.gallery-item img')).map(i => i.src);
+      _lbIdx  = _lbImgs.indexOf(img.src);
+    } else {
+      // single image (step-image)
+      _lbImgs = [img.src];
+      _lbIdx  = 0;
+    }
+
+    lbRender();
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function lbRender() {
+    document.getElementById('lb-img').src = _lbImgs[_lbIdx];
+    const counter = document.getElementById('lb-counter');
+    counter.textContent = _lbImgs.length > 1 ? `${_lbIdx + 1} / ${_lbImgs.length}` : '';
+    document.querySelector('.lb-prev').classList.toggle('hidden', _lbImgs.length <= 1);
+    document.querySelector('.lb-next').classList.toggle('hidden', _lbImgs.length <= 1);
+  }
+
+  function lbMove(dir) {
+    _lbIdx = (_lbIdx + dir + _lbImgs.length) % _lbImgs.length;
+    lbRender();
+  }
+
+  function lbBgClick(e) {
+    if (e.target === document.getElementById('lightbox') || e.target === document.getElementById('lb-img')) {
+      if (e.target.id === 'lightbox') closeLightbox();
+    }
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  lbMove(-1);
+    if (e.key === 'ArrowRight') lbMove(1);
+  });
+
+  // ── Carousel ──
+  function initCarousels() {
+    document.querySelectorAll('.carousel').forEach(car => {
+      const imgs = car.querySelectorAll('.carousel-track img');
+      const dots = car.querySelector('.carousel-dots');
+      car._idx = 0;
+
+      // build dots
+      imgs.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => carouselGo(car, i);
+        dots.appendChild(d);
+      });
+
+      // click image → lightbox
+      imgs.forEach(img => img.addEventListener('click', () => openLightbox(img)));
+    });
+  }
+
+  function carouselMove(btn, dir) {
+    const car = btn.closest('.carousel');
+    const total = car.querySelectorAll('.carousel-track img').length;
+    carouselGo(car, (car._idx + dir + total) % total);
+  }
+
+  function carouselGo(car, idx) {
+    car._idx = idx;
+    car.querySelector('.carousel-track').style.transform = `translateX(-${idx * 100}%)`;
+    car.querySelectorAll('.carousel-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === idx)
+    );
+  }
+
+  initCarousels();
+
+</script>
+
+</body>
+</html>
