@@ -706,7 +706,7 @@
       <div class="step-content">
         <div class="step-software">PureRef</div>
         <div class="step-title">Reference Collection</div>
-        <div class="step-desc">Before touching any 3D software, I build a dense reference board in PureRef -historical ninja garments, fabric types, silhouettes, movement references, and real-world kenjutsu attire. Solid references prevent guess-work downstream.</div>
+        <div class="step-desc">I always start by dropping references into PureRef. I gather historical ninja clothing, fabric textures, movement refs, and real-world kenjutsu gear. Having all this in front of me saves a ton of time and kills any guesswork during the 3D phase.</div>
       </div>
       <div class="step-image" id="ninja-img-1" onclick="openLightbox(this)">
         <img src="Ninja/Reference.png" alt="PureRef reference board">
@@ -722,7 +722,7 @@
       <div class="step-content">
         <div class="step-software">ZBrush</div>
         <div class="step-title">Character Sculpting</div>
-        <div class="step-desc">High-poly sculpting of the character's head, body, and face. Anatomy knowledge is applied here -musculature under clothing, proportional balance, and realistic surface detail that will transfer through baking.</div>
+        <div class="step-desc">This is where I sculpt the high-poly character. I paid special attention to the face and hands in this work. I heavily rely on anatomy to nail the proportions and make sure the musculature works well under the garments.</div>
       </div>
       <div class="carousel" id="ninja-img-2">
         <div class="carousel-track">
@@ -748,7 +748,7 @@
       <div class="step-content">
         <div class="step-software">Marvelous Designer</div>
         <div class="step-title">Clothing Creation</div>
-        <div class="step-desc">Garments are constructed from real 2D pattern pieces, sewn together in MD, and simulated on the character body. This produces physically accurate cloth behaviour -drape, tension, fold lines -that would be impossible to model by hand.</div>
+        <div class="step-desc">All clothes start as actual 2D sewing patterns. I assemble them in MD and run the simulation over the character's body. This creates realistic fabric movement, proper tension, and natural fold lines.</div>
       </div>
       <div class="step-image" id="ninja-img-3" onclick="openLightbox(this)">
         <img src="Ninja/Cloth/MarvelousDesigner.png" alt="Marvelous Designer clothing creation">
@@ -764,7 +764,7 @@
       <div class="step-content">
         <div class="step-software">ZBrush</div>
         <div class="step-title">Clothing Detailing</div>
-        <div class="step-desc">The simulated cloth mesh is brought into ZBrush to add surface detail -fabric weave, stitching, folds, wrinkles, and material texture that Marvelous Designer doesn't produce. This high-frequency detail bakes down onto the low-poly later.</div>
+        <div class="step-desc">I bring the simulated cloth into ZBrush for the final detailing pass. This is where I add fabric weaves, stitching, memory folds, and micro-wrinkles. Marvelous handles the physics, but ZBrush gives it texture. All these high-frequency details are crucial for a clean bake onto the low-poly mesh later.</div>
       </div>
       <div class="carousel" id="ninja-img-4">
         <div class="carousel-track">
@@ -793,7 +793,7 @@
       <div class="step-content">
         <div class="step-software">Blender</div>
         <div class="step-title">Retopology</div>
-        <div class="step-desc">The high-density simulation mesh is retopologised in Blender to a clean, game-ready low-poly mesh. Edge loops follow the garment seams and animation deformation areas to preserve silhouette and fold shape at runtime.</div>
+        <div class="step-desc">I bring the heavy high-poly mesh into Blender and build a clean, game-ready low-poly model. I route the edge loops right along the garment seams and joints. This keeps the silhouette sharp and ensures the folds deform properly during animation.</div>
       </div>
       <div class="carousel" id="ninja-img-5">
         <div class="carousel-track">
@@ -818,7 +818,7 @@
       <div class="step-content">
         <div class="step-software">Marmoset Toolbag</div>
         <div class="step-title">Baking (High → Low)</div>
-        <div class="step-desc">Normal maps, AO, curvature, and thickness baked from the high-poly onto the game-ready low-poly in Marmoset. Cage-based baking handles tight geometry and layered garment areas that standard bakers struggle with.</div>
+        <div class="step-desc">I use Marmoset to bake the Normal, AO, Curvature, and Thickness maps. This transfers all the high-poly data onto the game-ready mesh. Its cage baking system is great for handling layered garments and tight geometry.</div>
       </div>
       <div class="step-image" id="ninja-img-6b" onclick="openLightbox(this)">
         <img src="Ninja/Marmoset.png" alt="Marmoset Toolbag baking">
@@ -834,7 +834,7 @@
       <div class="step-content">
         <div class="step-software">Substance Painter</div>
         <div class="step-title">Texturing</div>
-        <div class="step-desc">PBR texture set creation -fabric weave patterns, wear and soiling, stitching detail, and material variation across linen, leather, and metal trim. Smart materials layered with hand-painted breakup.</div>
+        <div class="step-desc">Here I build the PBR textures. I focus on getting the fabric weaves, dirt, wear, and stitching to look right. I make sure the linen, leather, and metal trims feel distinctly different. I start with smart materials as a base and layer hand-painted details on top to break things up naturally.</div>
       </div>
       <div class="step-image" id="ninja-img-7" onclick="openLightbox(this)">
         <img src="Ninja/Cloth/SubstancePainter.png" alt="Substance Painter texturing">
@@ -850,7 +850,7 @@
       <div class="step-content">
         <div class="step-software">Unreal Engine + MH Creator</div>
         <div class="step-title">Character Export & Skin Wrapping</div>
-        <div class="step-desc">Character exported to UE, then skin-wrapped using MH Creator to bind the clothing mesh correctly to the character skeleton. This ensures deformation follows anatomy rather than just bone transforms.</div>
+        <div class="step-desc">I import the raw character sculpt into Unreal Engine and send it straight to MetaHuman Creator. I use the MetaHuman system to wrap its mesh over my custom sculpt. This keeps my original design but gives the character a clean, animation-ready topology.</div>
       </div>
       <div class="step-image" id="ninja-img-8" onclick="openLightbox(this)">
         <img src="Ninja/Character/UE_MHCreator.png" alt="UE + MH Creator skin wrap">
@@ -866,7 +866,7 @@
       <div class="step-content">
         <div class="step-software">Blender</div>
         <div class="step-title">Clothing Skinning</div>
-        <div class="step-desc">Character exported back to Blender for precise clothing skinning -weight painting each garment piece to the skeleton with attention to layered cloth, secondary motion, and joint deformation at elbows, knees, and hips.</div>
+        <div class="step-desc">I export the character back to Blender to handle the clothing skinning. I carefully weight paint every garment piece to the skeleton. The main focus here is layered cloth, secondary motion, and clean joint deformation around the elbows, knees, and hips.</div>
       </div>
       <div class="step-image" id="ninja-img-9" onclick="openLightbox(this)">
         <img src="Ninja/Cloth/Blender_Skinning.png" alt="Blender skinning">
@@ -881,7 +881,7 @@
       <div class="step-content">
         <div class="step-software">Unreal Engine + MH Wardrobe</div>
         <div class="step-title">Final Engine Integration</div>
-        <div class="step-desc">Final clothing export to UE and assembled as an MH Wardrobe entry -LOD setup, material assignments, and in-engine validation to confirm performance and visual quality at all LOD levels.</div>
+        <div class="step-desc">Time for the final integration. I bring the clothing into UE and build it out as a MetaHuman Wardrobe entry. Finally, I set up the lighting and shoot the final portfolio renders directly in UE.</div>
       </div>
       <div class="carousel" id="ninja-img-10">
         <div class="carousel-track">
